@@ -18,7 +18,7 @@ class MainWindow:
         self.layout = QVBoxLayout()
 
         self.image_label = QLabel()
-        self.givenImage = QPixmap('./Untitled2.png')
+        self.givenImage = QPixmap('./Untitled.png')
         self.givenImage = self.givenImage.scaled(640, 640, Qt.IgnoreAspectRatio, Qt.FastTransformation)
         self.image_label.setPixmap(self.givenImage)
         self.split()
@@ -32,7 +32,7 @@ class MainWindow:
         select = QPushButton("Select Image")
         self.choice = 0
         self.cb = QComboBox()
-        self.options = ["Bubble Sort - O(n^2)", "Selection Sort - O(n^2)", "Insertion Sort - O(n^2) ", "Heap Sort - O(n*log(n))", "Merge Sort - O(n^2)"]
+        self.options = ["Bubble Sort - O(n^2)", "Selection Sort - O(n^2)", "Insertion Sort - O(n^2) ", "Heap Sort - O(n*log(n))"]
         self.cb.addItems(self.options)
         self.cb.currentIndexChanged.connect(self.selectionchange)
         self.layout.addWidget(self.cb)
@@ -63,7 +63,7 @@ class MainWindow:
         self.choice = i
         for count in range(self.cb.count()):
             print(self.cb.itemText(count))
-        print("Current index", i, "selection changed ", self.cb.currentText())
+        print("------- " + self.cb.currentText() + " -------")
 
     def randomize(self):
         shuffle(self.chunktuples)
