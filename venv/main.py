@@ -1,4 +1,5 @@
 import gc
+import os
 import sys
 import time
 from datetime import datetime
@@ -27,9 +28,8 @@ class MainWindow:
         self.mainGrid.setSpacing(0)
         self.show()
 
-        self.layout.addWidget(self.image_label)
+        #self.layout.addWidget(self.image_label)
         self.layout.addLayout(self.mainGrid)
-        select = QPushButton("Select Image")
         self.choice = 0
         self.cb = QComboBox()
         self.options = ["Bubble Sort - O(n^2)", "Selection Sort - O(n^2)", "Insertion Sort - O(n^2) ", "Heap Sort - O(n*log(n))"]
@@ -37,6 +37,8 @@ class MainWindow:
         self.cb.currentIndexChanged.connect(self.selectionchange)
         self.layout.addWidget(self.cb)
 
+        select = QPushButton("Select Image")
+        select.clicked.connect(self.showDialog)
         shufflebutton = QPushButton("Shuffle")
         shufflebutton.clicked.connect(self.randomize)
         sortbutton = QPushButton("Sort")
@@ -45,18 +47,8 @@ class MainWindow:
         self.layout.addWidget(shufflebutton)
         self.layout.addWidget(sortbutton)
         self.window.setLayout(self.layout)
-
         self.window.show()
         self.app.exec_()
-
-    sys._excepthook = sys.excepthook
-
-    def exception_hook(exctype, value, traceback):
-        print(exctype, value, traceback)
-        sys._excepthook(exctype, value, traceback)
-        sys.exit(1)
-
-    sys.excepthook = exception_hook
 
     def selectionchange(self, i):
         print("Items in the list are :")
@@ -64,6 +56,15 @@ class MainWindow:
         for count in range(self.cb.count()):
             print(self.cb.itemText(count))
         print("------- " + self.cb.currentText() + " -------")
+
+    def showDialog(self):
+        self.givenImage = QPixmap(QFileDialog.getOpenFileName()[0])
+        self.givenImage = self.givenImage.scaled(640, 640, Qt.IgnoreAspectRatio, Qt.FastTransformation)
+        self.image_label.setPixmap(self.givenImage)
+        self.split()
+
+        self.mainGrid.update()
+        self.show()
 
     def randomize(self):
         shuffle(self.chunktuples)
