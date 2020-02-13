@@ -1,8 +1,3 @@
-import gc
-import os
-import sys
-import time
-from datetime import datetime
 from random import shuffle
 
 from PyQt5.QtCore import *
@@ -17,9 +12,9 @@ class MainWindow:
         self.app = QApplication([])
         self.window = QWidget()
         self.layout = QVBoxLayout()
-
+        self.window.setWindowTitle("Sorting Visualizer!")
         self.image_label = QLabel()
-        self.givenImage = QPixmap('./Untitled.png')
+        self.givenImage = QPixmap('./the_beach.jpg')
         self.givenImage = self.givenImage.scaled(640, 640, Qt.IgnoreAspectRatio, Qt.FastTransformation)
         self.image_label.setPixmap(self.givenImage)
         self.split()
