@@ -11,8 +11,11 @@ class MainWindow:
     def __init__(self):
         self.app = QApplication([])
         self.window = QWidget()
+        self.window.setStyleSheet(open('./res/styles.css').read())
         self.layout = QVBoxLayout()
         self.window.setWindowTitle("Sorting Visualizer!")
+        self.window.move(300,300)
+
         self.image_label = QLabel()
         self.givenImage = QPixmap('./the_beach.jpg')
         self.givenImage = self.givenImage.scaled(640, 640, Qt.IgnoreAspectRatio, Qt.FastTransformation)
@@ -20,24 +23,31 @@ class MainWindow:
         self.split()
 
         self.mainGrid = QGridLayout()
-        self.mainGrid.setSpacing(0)
+        self.mainGrid.setSpacing(2)
         self.show()
 
         #self.layout.addWidget(self.image_label)
         self.layout.addLayout(self.mainGrid)
         self.choice = 0
         self.cb = QComboBox()
+        self.cb.setStyleSheet(open('./res/styles.css').read())
         self.options = ["Bubble Sort - O(n^2)", "Selection Sort - O(n^2)", "Insertion Sort - O(n^2) ", "Heap Sort - O(n*log(n))"]
         self.cb.addItems(self.options)
         self.cb.currentIndexChanged.connect(self.selectionchange)
         self.layout.addWidget(self.cb)
 
         select = QPushButton("Select Image")
+        select.setStyleSheet(open('./res/styles.css').read())
         select.clicked.connect(self.showDialog)
+        
         shufflebutton = QPushButton("Shuffle")
+        shufflebutton.setStyleSheet(open('./res/styles.css').read())
         shufflebutton.clicked.connect(self.randomize)
+
         sortbutton = QPushButton("Sort")
+        sortbutton.setStyleSheet(open('./res/styles.css').read())
         sortbutton.clicked.connect(self.callsort)
+        
         self.layout.addWidget(select)
         self.layout.addWidget(shufflebutton)
         self.layout.addWidget(sortbutton)

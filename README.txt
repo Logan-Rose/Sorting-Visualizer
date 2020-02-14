@@ -1,0 +1,2 @@
+A small Python sorting algorithm visualizer, this program uses the pyQt5 graphics library, but it had to be removed
+from this directory due to file size constraints. The full root folder can be found at https://github.com/Logan-Rose/Sorting-Visualizer
