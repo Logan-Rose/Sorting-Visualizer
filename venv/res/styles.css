@@ -1,0 +1,37 @@
+QVBoxLayout{
+	background: black;
+	border-style: solid;
+	border-color:white;
+}
+
+QPushButton, QComboBox{
+	background : white;
+	text-align: center;
+	padding:25px;
+	font-family: "Arial";
+	font-weight: bold;
+	font-size: 32px;
+	border-style: solid;
+	border-width:1px;
+	border-color:grey;
+}
+QComboBox::drop-down {
+   border: 0px;
+}
+
+QComboBox::down-arrow {
+    image: url(res/arrow.png);
+    margin-right: 50px;
+    width: 50px;
+    height: 50px;
+}
+
+QComboBox:hover{
+	background : #d4ebf2;
+    width: 50px;
+    height: 50px;
+}
+
+QPushButton:hover{
+	background : #d4ebf2;
+}
