@@ -1,3 +1,3 @@
 A visualizer that demonstrates various sorting algorithms.
 
-![App Demonstration](/Venv/Demonstration.png)
+![App Demonstration](/venv/Demonstration.png)
